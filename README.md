@@ -5,7 +5,7 @@ This package lets you run Smarty3 on Laravel4 elegantly.
 
 ## Installation
 
-```json
+```
 composer require latrell/smarty dev-master
 ```
 
