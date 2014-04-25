@@ -26,6 +26,8 @@ Find the `providers` key in `app/config/app.php` and register the Smarty Service
     )
 ```
 
+Then publish the config file with `php artisan config:publish latrell/smarty`. This will add the file `app/config/packages/latrell/smarty/config.php`. This config file is the primary way you interact with Smarty.
+
 Then simply reference templates using the normal dot syntax of Laravel. 
 
 For example to load smarty template views/blog/post.tpl, you would use View::make('blog.post').
