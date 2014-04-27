@@ -30,6 +30,6 @@ Then publish the config file with `php artisan config:publish latrell/smarty`. T
 
 Then simply reference templates using the normal dot syntax of Laravel. 
 
-For example to load smarty template views/blog/post.tpl, you would use View::make('blog.post').
+For example to load smarty template `views/blog/post.tpl`, you would use `View::make('blog.post')`.
 
-In Smarty {include} or {extends} tags, you should continue to use the full directory syntax, e.g. {extends file="blog/post.tpl"}.
+In Smarty `{include}` or `{extends}` tags, you should continue to use the full directory syntax, e.g. `{extends file="blog/post.tpl"}`.
