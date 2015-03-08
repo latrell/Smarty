@@ -1,8 +1,10 @@
-<?php namespace Latrell\Smarty;
+<?php
+namespace Latrell\Smarty;
 
 use Illuminate\Support\ServiceProvider;
 
-class SmartyServiceProvider extends ServiceProvider {
+class SmartyServiceProvider extends ServiceProvider
+{
 
 	/**
 	 * Indicates if loading of the provider is deferred.
@@ -18,7 +20,9 @@ class SmartyServiceProvider extends ServiceProvider {
 	 */
 	public function boot()
 	{
-		$this->package('latrell/smarty');
+		$this->publishes([
+			__DIR__ . '/../../config/config.php' => config_path('latrell-smarty.php')
+		]);
 	}
 
 	/**
@@ -28,21 +32,11 @@ class SmartyServiceProvider extends ServiceProvider {
 	 */
 	public function register()
 	{
-		$app = $this->app;
+		$this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'latrell-smarty');
 
-		$this->app['view']->addExtension('tpl', 'smarty', function() use ($app){
-			return new SmartyEngine($app['config']);
+		$this->app['view']->addExtension($this->app['config']->get('latrell-smarty.extension', 'tpl'), 'smarty', function ()
+		{
+			return new SmartyEngine($this->app['config']);
 		});
 	}
-
-	/**
-	 * Get the services provided by the provider.
-	 *
-	 * @return array
-	 */
-	public function provides()
-	{
-		return array();
-	}
-
 }
