@@ -19,7 +19,7 @@ return [
 	],
 
 	// 当系统缓存驱动不为“file”时有效。
-	'cache_prefix' => 'smarty'
+	'cache_prefix' => 'smarty',
 
 	// escape HTML: if this is set to true, then all variables will be escaped.
 	// See http://www.smarty.net/docs/en/variable.escape.html.tpl

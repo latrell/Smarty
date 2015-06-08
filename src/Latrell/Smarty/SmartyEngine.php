@@ -47,7 +47,7 @@ class SmartyEngine implements Engines\EngineInterface
 		$plugins_paths = (array) $this->config('plugins_paths');
 		$config_paths = (array) $this->config('config_paths');
 
-		$escape_html = $this->config('escape_html') ? true : false;
+		$escape_html = $this->config('escape_html', false);
 
 		// Create smarty object.
 		$smarty = new \Smarty();
