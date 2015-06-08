@@ -47,6 +47,8 @@ class SmartyEngine implements Engines\EngineInterface
 		$plugins_paths = (array) $this->config('plugins_paths');
 		$config_paths = (array) $this->config('config_paths');
 
+		$escape_html = $this->config('escape_html') ? true : false;
+
 		// Create smarty object.
 		$smarty = new \Smarty();
 
@@ -66,7 +68,10 @@ class SmartyEngine implements Engines\EngineInterface
 		$smarty->cache_lifetime = $cache_lifetime;
 		$smarty->compile_check = true;
 
-		// $smarty->escape_html = true;
+		// set the escape_html flag from the configuration value
+		//
+		$smarty->escape_html = $escape_html;
+
 		$smarty->error_reporting = E_ALL & ~ E_NOTICE;
 
 		foreach ($__data as $var => $val) {
