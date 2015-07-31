@@ -23,6 +23,13 @@ class SmartyServiceProvider extends ServiceProvider
 		$this->publishes([
 			__DIR__ . '/../../config/config.php' => config_path('latrell-smarty.php')
 		]);
+
+		$this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'latrell-smarty');
+
+		$this->app['view']->addExtension($this->app['config']->get('latrell-smarty.extension', 'tpl'), 'smarty', function ()
+		{
+			return new SmartyEngine($this->app['config']);
+		});
 	}
 
 	/**
@@ -32,11 +39,5 @@ class SmartyServiceProvider extends ServiceProvider
 	 */
 	public function register()
 	{
-		$this->mergeConfigFrom(__DIR__ . '/../../config/config.php', 'latrell-smarty');
-
-		$this->app['view']->addExtension($this->app['config']->get('latrell-smarty.extension', 'tpl'), 'smarty', function ()
-		{
-			return new SmartyEngine($this->app['config']);
-		});
 	}
 }
