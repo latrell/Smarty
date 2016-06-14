@@ -48,6 +48,9 @@ class SmartyEngine implements Engines\EngineInterface
 		$config_paths = (array) $this->config('config_paths');
 
 		$escape_html = $this->config('escape_html', false);
+		
+		$leftDelimiter = $this->config('left_delimiter', '{');
+		$rightDelimiter = $this->config('right_delimiter', '}');
 
 		// Create smarty object.
 		$smarty = new \Smarty();
@@ -73,6 +76,9 @@ class SmartyEngine implements Engines\EngineInterface
 		$smarty->escape_html = $escape_html;
 
 		$smarty->error_reporting = E_ALL & ~ E_NOTICE;
+		
+		$smarty->setLeftDelimiter($leftDelimiter);
+		$smarty->setRightDelimiter($rightDelimiter);
 
 		foreach ($__data as $var => $val) {
 			$smarty->assign($var, $val);

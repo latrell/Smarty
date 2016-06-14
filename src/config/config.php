@@ -25,4 +25,8 @@ return [
 	// See http://www.smarty.net/docs/en/variable.escape.html.tpl
 	//
 	'escape_html' => false,
+    
+    // 自定义分界符
+    'left_delimiter' => '{',
+    'right_delimiter' => '}',
 ];
